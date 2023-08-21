@@ -17,41 +17,46 @@
 <body>
     <div class="wrapper">
         <div class="calc_body">
-            <div class="calc_screen"></div>
+            <div id="screen" class="calc_screen">
+                <div id="screen_top"></div>
+                <div id="screen_bottom"></div>
+            </div>
             <div class="buttons">
                 <div class="row">
-                    <button class="operator">AC</button>
-                    <button class="operator">C</button>
-                    <button class="operator">M</button>
-                    <button class="operator">+/-</button>
+                    <button id="ac" class="ac operator">AC</button>
+                    <button id="c" class="c operator">C</button>
+                    <button id="m" class="m operator">M</button>
+                    <button id="negative" class="negative operator">+/-</button>
                 </div>
                 <div class="row">
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button class="divide operator">/</button>
+                    <button id="seven" class="seven">7</button>
+                    <button id="eight" class="eight">8</button>
+                    <button id="nine" class="nine">9</button>
+                    <button id="divide" class="divide operator">/</button>
                 </div>
                 <div class="row">
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button class="multiply operator">x</button>
+                    <button id="four" class="four">4</button>
+                    <button id="five" class="five">5</button>
+                    <button id="six" class="six">6</button>
+                    <button id="multiply" class="multiply operator">x</button>
                 </div>
                 <div class="row">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button class="minus operator">-</button>
+                    <button id="one" class="one">1</button>
+                    <button id="two" class="two">2</button>
+                    <button id="three" class="three">3</button>
+                    <button id="minus" class="minus operator">-</button>
                 </div>
                 <div class="row">
-                    <button class="zero_btn">0</button>
-                    <button>.</button>
-                    <button>+</button>
-                    <button class="equals_btn">=</button>
+                    <button id="zero" class="zero_btn">0</button>
+                    <button id="decimal" class="decimal">.</button>
+                    <button id="plus" class="plus">+</button>
+                    <button id="equals" class="equals_btn">=</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
