@@ -1,30 +1,8 @@
-
-
-let num1 = 0;
-
-let operator = '+';
-
-let num2 = 2;
-
-function operate(num1, operator, num2) {
-    if (operator == '+') {
-        return num1 + num2;
-    }
-    else if (operator == '-') {
-        return num1 - num2;
-    }
-    else if (operator == 'x') {
-        return num1 * num2;
-    }
-    else {
-        return num1 / num2;
-    }
-}
-
 let div = document.getElementById('screen_top');
 let resultDisplay = document.getElementById('screen_bottom');
 let results = 0;
 
+// button press handlers
 document.getElementById('ac').onclick = function () {
 
     div.textContent = '';
@@ -41,9 +19,9 @@ document.getElementById('c').onclick = function () {
     div.setAttribute('style', 'font-size: 2.5em; color:white;');
 }
 
-document.getElementById('negative').onclick = function () {
+document.getElementById('mod').onclick = function () {
 
-    div.textContent += 'negative';
+    div.textContent += ' % ';
     div.setAttribute('style', 'font-size: 2.5em; color:white;');
 }
 
@@ -137,24 +115,33 @@ document.getElementById('plus').onclick = function () {
     div.setAttribute('style', 'font-size: 2.5em; color:white;');
 }
 
-document.getElementById('equals').onclick = function () {
+
+// solve any equation from the text Content
+let displayResults = document.getElementById('equals').onclick = function () {
 
     let items = div.textContent.split(' ');
 
-    let answer = parseInt(items[0]);
+    let answer = parseFloat(items[0]);
+
+    if (!(items[0] > 0)) {
+        answer = 0;
+    }
 
     for (let i = 0; i < items.length; i++) {
         if (items[i] == '+') {
-            answer += parseInt(items[i + 1]);
+            answer += parseFloat(items[i + 1]);
         }
         if (items[i] == '-') {
-            answer -= parseInt(items[i + 1]);
+            answer -= parseFloat(items[i + 1]);
         }
         if (items[i] == 'x') {
-            answer *= parseInt(items[i + 1]);
+            answer *= parseFloat(items[i + 1]);
         }
         if (items[i] == '/') {
-            answer /= parseInt(items[i + 1]);
+            answer /= parseFloat(items[i + 1]);
+        }
+        if (items[i] == '%') {
+            answer %= parseFloat(items[i + 1]);
         }
     };
 
@@ -162,3 +149,89 @@ document.getElementById('equals').onclick = function () {
     resultDisplay.setAttribute('style', 'font-size: 1.5em; color:white;');
     div.setAttribute('style', 'font-size: 2.5em; color:white;');
 }
+
+// keyboard event handlers
+document.addEventListener('keydown', e => {
+    e.preventDefault;
+    console.log(e);
+    if (e.code == 'Digit1') {
+        div.textContent += 1;
+    };
+
+    if (e.code == 'Digit2') {
+        div.textContent += 2;
+    };
+
+    if (e.code == 'Digit3') {
+        div.textContent += 3;
+    };
+
+    if (e.code == 'Digit4') {
+        div.textContent += 4;
+    };
+
+    if (e.code == 'Digit5' && e.ctrlKey == false) {
+        div.textContent += 5;
+    };
+
+    if (e.code == 'Digit6') {
+        div.textContent += 6;
+    };
+
+    if (e.code == 'Digit7') {
+        div.textContent += 7;
+    };
+
+    if (e.code == 'Digit8') {
+        div.textContent += 8;
+    };
+
+    if (e.code == 'Digit9') {
+        div.textContent += 9;
+    };
+
+    if (e.code == 'Equal') {
+        div.textContent += ' + ';
+    };
+
+    if (e.code == 'Minus') {
+        div.textContent += ' - ';
+    };
+
+    if (e.code == 'KeyX') {
+        div.textContent += ' x ';
+    };
+
+    if (e.code == 'Slash') {
+        div.textContent += ' / ';
+    };
+
+    if (e.code == 'Digit5' && e.ctrlKey == true) {
+        div.textContent += ' % ';
+    };
+
+    if (e.code == 'Delete') {
+        div.textContent = '';
+        resultDisplay.textContent = '';
+        results = 0;
+    };
+
+    if (e.code == 'Backspace') {
+        let text = div.textContent;
+        text = text.substring(0, text.length - 1);
+        div.textContent = text;
+    };
+
+    if (e.code == 'Period') {
+        div.textContent += '.';
+    };
+
+    if (e.code == 'Digit0') {
+        div.textContent += 0;
+    };
+
+    if (e.code == 'Enter') {
+        displayResults();
+    };
+
+});
